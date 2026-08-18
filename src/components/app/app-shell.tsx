@@ -75,7 +75,7 @@ const navGroups: { title: string; items: NavItem[] }[] = [
 ];
 
 function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
-  const [org, setOrg] = useState(organisations[0]);
+  const [org, setOrg] = useState(organisations[0]!);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
