@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClientsRouteImport } from './routes/clients'
+import { Route as EmployeesRouteImport } from './routes/employees'
+import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as TransactionsRouteImport } from './routes/transactions'
+import { Route as FinanceAccountsRouteImport } from './routes/finance.accounts'
+import { Route as FinanceBankingRouteImport } from './routes/finance.banking'
+import { Route as FinanceLedgerRouteImport } from './routes/finance.ledger'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesRoute = EmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceAccountsRoute = FinanceAccountsRouteImport.update({
+  id: '/finance/accounts',
+  path: '/finance/accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceBankingRoute = FinanceBankingRouteImport.update({
+  id: '/finance/banking',
+  path: '/finance/banking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceLedgerRoute = FinanceLedgerRouteImport.update({
+  id: '/finance/ledger',
+  path: '/finance/ledger',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clients': typeof ClientsRoute
+  '/employees': typeof EmployeesRoute
+  '/invoices': typeof InvoicesRoute
+  '/transactions': typeof TransactionsRoute
+  '/finance/accounts': typeof FinanceAccountsRoute
+  '/finance/banking': typeof FinanceBankingRoute
+  '/finance/ledger': typeof FinanceLedgerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clients': typeof ClientsRoute
+  '/employees': typeof EmployeesRoute
+  '/invoices': typeof InvoicesRoute
+  '/transactions': typeof TransactionsRoute
+  '/finance/accounts': typeof FinanceAccountsRoute
+  '/finance/banking': typeof FinanceBankingRoute
+  '/finance/ledger': typeof FinanceLedgerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clients': typeof ClientsRoute
+  '/employees': typeof EmployeesRoute
+  '/invoices': typeof InvoicesRoute
+  '/transactions': typeof TransactionsRoute
+  '/finance/accounts': typeof FinanceAccountsRoute
+  '/finance/banking': typeof FinanceBankingRoute
+  '/finance/ledger': typeof FinanceLedgerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/clients'
+    | '/employees'
+    | '/invoices'
+    | '/transactions'
+    | '/finance/accounts'
+    | '/finance/banking'
+    | '/finance/ledger'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/clients'
+    | '/employees'
+    | '/invoices'
+    | '/transactions'
+    | '/finance/accounts'
+    | '/finance/banking'
+    | '/finance/ledger'
+  id:
+    | '__root__'
+    | '/'
+    | '/clients'
+    | '/employees'
+    | '/invoices'
+    | '/transactions'
+    | '/finance/accounts'
+    | '/finance/banking'
+    | '/finance/ledger'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClientsRoute: typeof ClientsRoute
+  EmployeesRoute: typeof EmployeesRoute
+  InvoicesRoute: typeof InvoicesRoute
+  TransactionsRoute: typeof TransactionsRoute
+  FinanceAccountsRoute: typeof FinanceAccountsRoute
+  FinanceBankingRoute: typeof FinanceBankingRoute
+  FinanceLedgerRoute: typeof FinanceLedgerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees': {
+      id: '/employees'
+      path: '/employees'
+      fullPath: '/employees'
+      preLoaderRoute: typeof EmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance/accounts': {
+      id: '/finance/accounts'
+      path: '/finance/accounts'
+      fullPath: '/finance/accounts'
+      preLoaderRoute: typeof FinanceAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance/banking': {
+      id: '/finance/banking'
+      path: '/finance/banking'
+      fullPath: '/finance/banking'
+      preLoaderRoute: typeof FinanceBankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance/ledger': {
+      id: '/finance/ledger'
+      path: '/finance/ledger'
+      fullPath: '/finance/ledger'
+      preLoaderRoute: typeof FinanceLedgerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClientsRoute: ClientsRoute,
+  EmployeesRoute: EmployeesRoute,
+  InvoicesRoute: InvoicesRoute,
+  TransactionsRoute: TransactionsRoute,
+  FinanceAccountsRoute: FinanceAccountsRoute,
+  FinanceBankingRoute: FinanceBankingRoute,
+  FinanceLedgerRoute: FinanceLedgerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
